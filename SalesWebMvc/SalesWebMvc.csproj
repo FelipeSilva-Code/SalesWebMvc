@@ -7,12 +7,16 @@
   <ItemGroup>
     <Compile Remove="Models\NovaPasta1\NovaPasta\**" />
     <Compile Remove="Models\NovaPasta\**" />
+    <Compile Remove="Views\Departamentos\**" />
     <Content Remove="Models\NovaPasta1\NovaPasta\**" />
     <Content Remove="Models\NovaPasta\**" />
+    <Content Remove="Views\Departamentos\**" />
     <EmbeddedResource Remove="Models\NovaPasta1\NovaPasta\**" />
     <EmbeddedResource Remove="Models\NovaPasta\**" />
+    <EmbeddedResource Remove="Views\Departamentos\**" />
     <None Remove="Models\NovaPasta1\NovaPasta\**" />
     <None Remove="Models\NovaPasta\**" />
+    <None Remove="Views\Departamentos\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +25,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Departamentos\Create.cshtml" />
+    <None Include="Views\Departamentos\Delete.cshtml" />
+    <None Include="Views\Departamentos\Details.cshtml" />
+    <None Include="Views\Departamentos\Edit.cshtml" />
+    <None Include="Views\Departamentos\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
   </ItemGroup>
 
