@@ -20,12 +20,13 @@ namespace SalesWebMvc.Models
         { 
         }
 
-        public Product(int id, string name, double price, string brand, Department department)
+        public Product(int id, string name, double price, string brand, int Quantity, Department department)
         {
             Id = id;
             Name = name;
             Price = price;
             Brand = brand;
+            Quantity = Quantity;
             Department = department;
         }
 
