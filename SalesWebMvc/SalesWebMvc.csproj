@@ -21,8 +21,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Services\Novo Documento de Texto.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Models\NovaPasta1\" />
     <Folder Include="Models\ViewModel\" />
+    <Folder Include="NovaPasta1\" />
+    <Folder Include="NovaPasta\" />
   </ItemGroup>
 
   <ItemGroup>

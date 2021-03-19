@@ -62,6 +62,7 @@ namespace SalesWebMvc.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(departamento);
         }
 
