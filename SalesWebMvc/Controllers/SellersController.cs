@@ -18,7 +18,8 @@ namespace SalesWebMvc.Controllers
         }
         
 
-        /*private readonly SalesWebMvcContext _context;
+        /* ---- How it will be withoud Services -----
+        private readonly SalesWebMvcContext _context;
         public SellersController(SalesWebMvcContext context)
         {
             _context = context;
@@ -29,6 +30,19 @@ namespace SalesWebMvc.Controllers
         public IActionResult Index()
         {
             return View( _sellerService.FindAll());
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken] //https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-5.0
+        public IActionResult Create (Seller seller)
+        {
+            _sellerService.Insert(seller);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
