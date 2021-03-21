@@ -37,7 +37,7 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Seller.DepartmentId" class="control-label"></label>
+                <label asp-for="Seller.DepartmentId" class="control-label">Department</label>
                 <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id",
 "Nome"))" class="form-control"></select>
             </div>

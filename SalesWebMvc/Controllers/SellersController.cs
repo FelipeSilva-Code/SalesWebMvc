@@ -48,6 +48,14 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken] //https://docs.microsoft.com/en-us/aspnet/core/security/anti-request-forgery?view=aspnetcore-5.0
         public IActionResult Create (Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                List<Department> departments = _departmentService.FindAll();
+                SellerFormViewModel viewModel = new SellerFormViewModel() { Departments = departments, Seller = seller };
+
+                return View(viewModel);
+            }
+
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -107,6 +115,14 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit (int id, Seller seller)
         {
+            if (!ModelState.IsValid)
+            {
+                List<Department> departments = _departmentService.FindAll();
+                SellerFormViewModel viewModel = new SellerFormViewModel() { Departments = departments, Seller = seller };
+
+                return View(viewModel);
+            }
+
             if (id != seller.Id)
                 return RedirectToAction(nameof(Error), new { message = "Id mismatch" });
 
