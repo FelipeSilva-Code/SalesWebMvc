@@ -30,7 +30,7 @@
     <div class="panel-body">
         <table class="table table-hover">
             <thead>
-                <tr class="primary">
+                <tr class="table-primary">
                     <th>
                         @Html.DisplayNameFor(model => model.Id)
                     </th>
@@ -39,6 +39,9 @@
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Seller)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Seller.Department)
@@ -54,26 +57,29 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Seller.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Seller.Department.Nome)
-                        </td>
-                        <td>
-                            $ @Html.DisplayFor(modelItem => item.Amount)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Status)
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Seller.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Product.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Seller.Department.Nome)
+                    </td>
+                    <td>
+                        $ @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
