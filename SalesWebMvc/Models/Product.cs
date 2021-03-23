@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using SalesWebMvc.Models.Enuns;
@@ -10,6 +11,8 @@ namespace SalesWebMvc.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        
+        [DisplayFormat(DataFormatString = "{0:F2}")]
         public double Price { get; set; }
         public string Brand { get; set; }
         public int Quantity { get; set; }
