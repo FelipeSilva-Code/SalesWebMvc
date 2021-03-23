@@ -4,18 +4,29 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Services;
+using SalesWebMvc.Models.ViewModels;
+using SalesWebMvc.Models;
 
 namespace SalesWebMvc.Controllers
 {
     public class SalesRecordsController : Controller
     {
         private readonly SalesRecordServices _salesRecordService;
-        public SalesRecordsController (SalesRecordServices salesRecordService)
+        private readonly ProductService _productService;
+        private readonly SellerService _sellerService;
+        public SalesRecordsController (SalesRecordServices salesRecordService, ProductService productService, SellerService sellerService)
         {
             _salesRecordService = salesRecordService;
+            _productService = productService;
+            _sellerService = sellerService;
         }
 
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Search()
         {
             return View();
         }
@@ -47,6 +58,34 @@ namespace SalesWebMvc.Controllers
             ViewData["maxDate"] = maxDate.Value.ToString("yyyy-MM-dd");
             var result = _salesRecordService.FindByDateGroupingAsync(minDate, maxDate);
             return View(result);
+        }
+
+        public async Task<IActionResult> Create ()
+        {
+            var products = await _productService.FindAllAsync();
+            var sellers = await _sellerService.FindAllAsync();
+
+            var viewModel = new SalesRecordViewModel() { Products = products, Sellers = sellers };
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(SalesRecord salesRecord)
+        {
+            if(!ModelState.IsValid)
+            {
+                var products = await _productService.FindAllAsync();
+                var sellers = await _sellerService.FindAllAsync();
+
+                var viewModel = new SalesRecordViewModel() { Products = products, Sellers = sellers };
+
+                return View(viewModel);
+            }
+
+            await _salesRecordService.InsertAsync(salesRecord);
+            return RedirectToAction(nameof(Index));
         }
     }
     

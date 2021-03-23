@@ -31,11 +31,17 @@ namespace SalesWebMvc.Services
         {
 
             var data = _context.SalesRecord.Include(x => x.Seller)
-                       .Include(x => x.Seller.Department)
                        .Include(x => x.Product)
+                       .Include(x => x.Product.Department)
                        .Where(x => x.Date >= minDate.Value && x.Date <= maxDate.Value)
-                       .ToList().GroupBy(x => x.Seller.Department);
+                       .ToList().GroupBy(x => x.Product.Department);
             return data;
+        }
+
+        public async Task InsertAsync (SalesRecord salesRecord)
+        {
+            _context.Add(salesRecord);
+            await _context.SaveChangesAsync();
         }
 
 
