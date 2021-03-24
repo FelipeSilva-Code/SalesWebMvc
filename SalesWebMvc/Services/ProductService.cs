@@ -63,7 +63,7 @@ namespace SalesWebMvc.Services
 
         public async Task UpdateAsync (Product product)
         {
-            if (!await _context.Seller.AnyAsync(x => x.Id == product.Id))
+            if (!await _context.Product.AnyAsync(x => x.Id == product.Id))
                 throw new NotFoundException("Id not found");
 
             try
